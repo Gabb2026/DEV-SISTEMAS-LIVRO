@@ -12,7 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.senai.teste.model.Livro;
 import br.com.senai.teste.service.LivroService;
+import jakarta.validation.Valid;
+
+
 import org.springframework.web.bind.annotation.DeleteMapping;
+
+
+
 @RestController
 @RequestMapping ("/Livro")
 public class LivroController {
@@ -23,10 +29,13 @@ public class LivroController {
 }
 @PostMapping
 public ResponseEntity<Livro> cadastrar (
-    @RequestBody Livro livro){
+     @Valid @RequestBody Livro livro){
+
+        System.out.println("Recebendo requisição para cadastrar livro: " + livro.getTitulo());
         Livro livroCadastrado = livroService.cadastrar(livro);
         return ResponseEntity
                  .status(HttpStatus.CREATED)
+                 
                  .body(livroCadastrado);
     }
 
@@ -47,7 +56,7 @@ if (livroOptional.isPresent()) {
     return ResponseEntity.notFound().build();   
 }}
 @PutMapping("/{id}")
-public ResponseEntity<Livro> atualizar(@PathVariable Integer id, @RequestBody Livro novosDados){
+public ResponseEntity<Livro> atualizar(@PathVariable Integer id, @Valid  @RequestBody Livro novosDados){
     Optional<Livro> livroOptional = livroService.atualizar(id, novosDados);
     if (livroOptional.isPresent()) {
         return ResponseEntity.ok(livroOptional.get());

@@ -1,52 +1,63 @@
 package br.com.senai.teste.model;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType; 
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 
-    
-    @Entity
-    @Table(name = "livro")
-    public class Livro {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int id;
-        private String titulo;
-        private String autor;
-        private String anoPublicacao;
+@Entity
+@Table(name = "livro")
+public class Livro {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @NotBlank(message = "O título do livro é obrigatório")
+    private String titulo;
+    @NotBlank(message = "O autor do livro é obrigatório")
+    private String autor;
 
-    
-    public Livro(){
+    @Min(value = 1, message = "O ano deve ser maior que 0")
+    private int anoPublicacao;
 
-    }  
+    public Livro() {
 
-    public Livro(String titulo, String autor, String anoPublicacao){
-        this.titulo = titulo;
-        this.autor = autor;
-        this.anoPublicacao = anoPublicacao; 
     }
 
-    public int getId(){
+    public Livro(String titulo, String autor, int anoPublicacao) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.anoPublicacao = anoPublicacao;
+    }
+
+    public int getId() {
         return id;
     }
-    public String getTitulo(){
+
+    public String getTitulo() {
         return titulo;
-    
+
     }
-    public void setTitulo(String titulo){
+
+    public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
-    public String getAutor(){
+
+    public String getAutor() {
         return autor;
     }
-    public void setAutor(String autor){
+
+    public void setAutor(String autor) {
         this.autor = autor;
     }
-    public String getAnoPublicacao(){
+
+    public int getAnoPublicacao() {
         return anoPublicacao;
     }
-    public void setAnoPublicacao(String anoPublicacao){
+
+    public void setAnoPublicacao(int anoPublicacao) {
         this.anoPublicacao = anoPublicacao;
     }
 }
