@@ -1,4 +1,4 @@
+br\com\senai\teste\repository\LivroRepository.class
 br\com\senai\teste\model\Livro.class
 br\com\senai\teste\service\LivroService.class
-br\com\senai\teste\repository\LivroRepository.class
 br\com\senai\teste\controller\LivroController.class
