@@ -4,7 +4,6 @@ import br.com.senai.teste.model.Aluno;
 import br.com.senai.teste.repository.AlunoRepository;
 import java.util.List;
 import java.util.Optional;
-import org.springframework.web.bind.annotation.DeleteMapping;
 @Service
 public class AlunoService {
     private final AlunoRepository alunoRepository;

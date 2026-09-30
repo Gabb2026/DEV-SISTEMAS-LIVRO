@@ -16,7 +16,7 @@ public class Emprestimo {
     @Id
     @GeneratedValue ( strategy = GenerationType.IDENTITY)
     private Integer id;
-
+    private LocalDate dataDevolucao;
     private LocalDate dataEmprestimo;
     @ManyToOne
     @JoinColumn (name = "aluno_id", nullable = false)
@@ -60,6 +60,12 @@ public class Emprestimo {
 
     public void setLivro(Livro livro) {
         this.livro = livro;
+    }
+    public LocalDate getDataDevolucao() {
+        return dataDevolucao;
+    }
+    public void setDataDevolucao(LocalDate dataDevolucao) {
+        this.dataDevolucao = dataDevolucao;
     }
     
 }
