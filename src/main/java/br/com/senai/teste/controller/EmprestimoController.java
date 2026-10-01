@@ -63,6 +63,15 @@ public class EmprestimoController {
         }
             return ResponseEntity.notFound().build();
         }
-
+@GetMapping ("/ativos")
+    public ResponseEntity<List<Emprestimo>> listarEmprestimosAtivos() {
+        List<Emprestimo> emprestimosAtivos = emprestimoService.listarEmprestimosAtivos();
+        return ResponseEntity.ok(emprestimosAtivos);
+    }
+    @GetMapping ("/ativosLivros")
+    public ResponseEntity<List<Emprestimo>> ListarEmprestimosAtivosPorLivro(){
+         List<Emprestimo> emprestimosAtivosPorLivro = emprestimoService.listarEmprestimosPorLivro();
+        return ResponseEntity.ok(emprestimosAtivosPorLivro);
+    }
 }
 

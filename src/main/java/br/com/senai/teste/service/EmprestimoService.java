@@ -63,4 +63,10 @@ public List<Emprestimo> listarTodos() {
     }
     return Optional.of(emprestimo);
 }
-}
+public List<Emprestimo> listarEmprestimosAtivos() {
+        return emprestimoRepository.findByDataDevolucaoIsNull();
+    }
+public List<Emprestimo> listarEmprestimosPorLivro()
+{
+    return emprestimoRepository.findByDataDevolucaoIsNull();
+}}
