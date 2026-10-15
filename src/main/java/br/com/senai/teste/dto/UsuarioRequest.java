@@ -1,0 +1,25 @@
+package br.com.senai.teste.dto;
+
+import jakarta.validation.constraints.NotBlank;
+
+public class UsuarioRequest {
+
+    @NotBlank (message = "O Login é Obrigatório")
+    private String login;
+    @NotBlank (message = "A senha é Obrigatória")
+    private String senha;
+     
+    public String getLogin(){
+        return login;
+    }
+    public void setLogin(String login){
+        this.login = login;
+    }
+    public String getSenha(){
+        return senha;
+    }
+    public void setSenha(String senha){
+        this.senha = senha;
+    }
+    
+}
